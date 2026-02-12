@@ -1,0 +1,16 @@
+{
+  "commands": [
+    {
+      "name": "myanalysis",
+      "description": "My custom analysis command"
+    },
+    {
+      "name": "mygraph",
+      "description": "My custom graphing command"
+    },
+    {
+      "name": "myutil",
+      "description": "My custom utility command"
+    }
+  ]
+}

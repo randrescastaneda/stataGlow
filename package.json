@@ -1,0 +1,126 @@
+{
+  "name": "stataGlow",
+  "displayName": "StataGlow",
+  "publisher": "randrescastaneda",
+  "version": "2.0.0",
+  "description": "Modern, customizable Stata syntax highlighting for VS Code and Positron",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/randrescastaneda/stataGlow"
+  },
+  "bugs": {
+    "url": "https://github.com/randrescastaneda/stataGlow/issues"
+  },
+  "keywords": [
+    "stata",
+    "syntax-highlighting",
+    "language",
+    "data-science"
+  ],
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Themes"
+  ],
+  "activationEvents": [
+    "onLanguage:stata"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "stata",
+        "aliases": [
+          "Stata",
+          "stata"
+        ],
+        "extensions": [
+          ".do",
+          ".ado",
+          ".mata"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "stata",
+        "scopeName": "source.stata",
+        "path": "./grammars/stata.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "StataGlow Official",
+        "uiTheme": "vs-dark",
+        "path": "./themes/stata-glow-official.json"
+      },
+      {
+        "label": "StataGlow Modern",
+        "uiTheme": "vs-dark",
+        "path": "./themes/stata-glow-modern.json"
+      }
+    ],
+    "configuration": {
+      "title": "StataGlow",
+      "properties": {
+        "language-stata.highlight.functions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight built-in statistical and mathematical functions"
+        },
+        "language-stata.highlight.macros": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight local and global macros"
+        },
+        "language-stata.highlight.strings": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight strings and compound strings"
+        },
+        "language-stata.highlight.regex": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight regular expressions in regex functions"
+        },
+        "language-stata.highlight.factorVariables": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight factor variable notation (i., c., o.)"
+        },
+        "language-stata.highlight.comments": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight comments"
+        },
+        "language-stata.enableCommunityCommands": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable highlighting of SSC/GitHub community-contributed commands"
+        },
+        "language-stata.customCommands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Array of custom user-defined commands to highlight"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build-grammar.js",
+    "validate": "node scripts/validate-commands.js",
+    "scrape": "node scripts/scrape-stata.js",
+    "test": "node scripts/test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

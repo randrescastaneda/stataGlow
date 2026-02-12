@@ -1,0 +1,84 @@
+{
+  "name": "StataGlow Official",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#1e1e1e",
+    "editor.foreground": "#d4d4d4",
+    "editor.lineNumberActiveBackground": "#464746",
+    "editor.lineNumberForeground": "#858585",
+    "editor.selectionBackground": "#264F78",
+    "editorCursor.foreground": "#aeafad",
+    "editorWhitespace.foreground": "#e3e4e229"
+  },
+  "tokenColors": [
+    {
+      "scope": "comment",
+      "settings": {
+        "foreground": "#6a9955"
+      }
+    },
+    {
+      "scope": "keyword.command.official.stata",
+      "settings": {
+        "foreground": "#569cd6",
+        "fontStyle": ""
+      }
+    },
+    {
+      "scope": "keyword.command.community.stata",
+      "settings": {
+        "foreground": "#569cd6",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": "keyword.command.custom.stata",
+      "settings": {
+        "foreground": "#c586c0",
+        "fontStyle": ""
+      }
+    },
+    {
+      "scope": "support.function.builtin.stata",
+      "settings": {
+        "foreground": "#dcdcaa"
+      }
+    },
+    {
+      "scope": "variable.other.macro.local.stata",
+      "settings": {
+        "foreground": "#9cdcfe"
+      }
+    },
+    {
+      "scope": "variable.other.macro.global.stata",
+      "settings": {
+        "foreground": "#4ec9b0"
+      }
+    },
+    {
+      "scope": "string.quoted.double.stata",
+      "settings": {
+        "foreground": "#ce9178"
+      }
+    },
+    {
+      "scope": "keyword.operator.arithmetic.stata",
+      "settings": {
+        "foreground": "#d4d4d4"
+      }
+    },
+    {
+      "scope": "keyword.operator.comparison.stata",
+      "settings": {
+        "foreground": "#d4d4d4"
+      }
+    },
+    {
+      "scope": "constant.numeric.stata",
+      "settings": {
+        "foreground": "#b5cea8"
+      }
+    }
+  ]
+}

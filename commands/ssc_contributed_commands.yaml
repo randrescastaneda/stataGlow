@@ -1,0 +1,10 @@
+metadata:
+  version: "19.0"
+  last_updated: "2026-02-12"
+  source: "ssc.command"
+
+categories:
+  ssc_commands:
+    description: "Community-contributed SSC commands"
+    icon: "📦"
+    commands: []
