@@ -115,8 +115,8 @@
   },
   "scripts": {
     "build": "node scripts/build-grammar.js",
+    "build:py": "python scripts/build-grammar.py",
     "validate": "node scripts/validate-commands.js",
-    "scrape": "node scripts/scrape-stata.js",
     "test": "node scripts/test.js"
   },
   "dependencies": {},
