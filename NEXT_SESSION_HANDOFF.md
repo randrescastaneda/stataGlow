@@ -1,94 +1,95 @@
-# StataGlow Phase 3 Handoff - Next Session Guide
+# StataGlow Phase 4 Handoff - Next Session Guide
 
 **Project**: StataGlow (VS Code Stata Syntax Highlighting Extension)  
-**Current Status**: Phase 2 Complete (Grammar Implementation)  
+**Current Status**: Phase 3 Complete (Syntax Highlighting Working)  
 **Date Updated**: February 12, 2026  
-**Next Work**: Phase 3 (Dynamic Features & Publishing)
+**Next Work**: Phase 4 (Dynamic Features & Publishing)
 
 ---
 
 ## Quick Start
 
 1. Read `PROJECT_STRUCTURE.md` for architecture overview
-2. Read `PHASE1_COMPLETE.md` for Phase 1 completed work (foundation)
-3. Read `PHASE2_COMPLETE.md` for Phase 2 completed work (grammar)
-4. Continue with Phase 3 tasks below
+2. Read `PHASE1_COMPLETE.md` for Phase 1 (foundation)
+3. Read `PHASE2_COMPLETE.md` for Phase 2 (grammar implementation)
+4. Read `PHASE3_COMPLETE.md` for Phase 3 (highlighting fixes)
+5. Continue with Phase 4 tasks below
 
 ---
 
 ## Current State
 
 - **Phase 1**: Foundation complete (25 files, scaffolding)
-- **Phase 2**: Grammar implementation complete
-- **Grammar**: 176 official Stata 19 commands + 15 pattern groups
-- **Test File**: `examples/comprehensive-syntax-test.do` (350 lines)
-- **Build Pipeline**: Ready (requires Node.js installation)
+- **Phase 2**: Grammar implementation complete (176 commands, 15+ pattern groups)
+- **Phase 3**: Syntax highlighting fixes complete (all features verified working)
+- **Status**: Extension is fully functional with comprehensive highlighting
 
-### Key Files Created in Phase 2
+### What Works Now
 
-| File | Lines | Purpose |
-|------|-------|---------|
-| `scripts/cson-parser.js` | ~200 | Parse CSON to JSON for future updates |
-| `grammars/stata.json` | ~750 | Complete TextMate grammar |
-| `examples/comprehensive-syntax-test.do` | ~350 | Comprehensive syntax test |
-| `PHASE2_COMPLETE.md` | ~200 | Phase 2 documentation |
+| Feature | Scope | Color |
+|---------|-------|-------|
+| Basic commands | `keyword.functions.data.stata` | Blue |
+| Official commands | `keyword.command.official.stata` | Blue |
+| Operators (`+ - * /`) | `keyword.operator.arithmetic.stata` | Orange/bold |
+| Control flow (`if foreach while`) | `keyword.control.flow.stata` | Cyan/bold |
+| Local macros (`` `x' ``) | `variable.other.macro.local.stata` | Light blue |
+| Global macros (`$x`) | `variable.other.macro.global.stata` | Teal/bold |
+| Compound strings (`` `"..."' ``) | `string.quoted.double.compound.stata` | Orange/italic |
+| Missing values (`.` `.a`-`.z`) | `constant.language.missing.stata` | Red/bold |
+| Special constants (`_N _n _pi`) | `constant.language.builtin.stata` | Light blue/bold |
+| Factor variables (`i.var`) | `constant.language.factorvars.stata` | Gold/bold |
+| Functions (`substr()`) | `support.function.builtin.stata` | Yellow |
+| Comments (`* // /* */`) | `comment.*` | Green |
 
-### Grammar Pattern Groups Implemented
+### Key Files
 
-- Comments (4 types: block, star, double-slash, triple-slash)
-- Strings (regular and compound)
-- Macros (local and global)
-- Functions (300+ built-in)
-- Operators (arithmetic, logical, comparison)
-- Constants (numeric, missing values)
-- Factor Variables (i., c., o., ib.)
-- Control Flow (if/else, loops)
-- Prefixes (by, quietly, capture, etc.)
-- Subscripts (_n, _N, matrix indexing)
-- Built-in Commands (with abbreviations)
-- Official Commands (176 Stata 19)
+| File | Purpose |
+|------|---------|
+| `grammars/stata.json` | TextMate grammar (580+ lines) |
+| `themes/stata-glow-official.json` | Official theme (30+ scopes) |
+| `themes/stata-glow-modern.json` | Modern theme variant |
+| `extension.js` | Extension entry point |
+| `package.json` | Extension manifest |
+| `.vscode/launch.json` | Debug configuration |
 
 ---
 
-## Phase 3 Priority Tasks
+## Phase 4 Priority Tasks
 
-### 1. Dynamic Grammar Injection
+### 1. Dynamic Grammar Injection (Optional Enhancement)
 
-Implement `extension.js` to modify grammar based on user settings:
+Implement runtime grammar modification based on user settings:
 
 ```javascript
-// Pseudo-code for extension.js enhancement
-function updateGrammar() {
+// In extension.js
+function updateGrammarForSettings() {
   const config = vscode.workspace.getConfiguration('language-stata');
   const enableFunctions = config.get('highlight.functions');
-  const enableMacros = config.get('highlight.macros');
-  // ... modify grammar patterns based on settings
+  // Modify grammar patterns based on settings
 }
 ```
 
-**Settings to Support**:
-- `language-stata.highlight.functions`
-- `language-stata.highlight.macros`
-- `language-stata.highlight.strings`
-- `language-stata.highlight.regex`
-- `language-stata.highlight.factorVariables`
-- `language-stata.highlight.comments`
+**Settings to implement:**
+- `language-stata.highlight.functions` - Toggle function highlighting
+- `language-stata.highlight.macros` - Toggle macro highlighting
+- `language-stata.highlight.strings` - Toggle string highlighting
+- `language-stata.highlight.factorVariables` - Toggle factor variable highlighting
 
 ### 2. Community Command Integration
 
-Load SSC/GitHub commands from YAML registries:
+Load SSC/GitHub commands from YAML registries at runtime:
 
 ```javascript
-// Load from commands/ssc_contributed_commands.yaml
-// Load from commands/github_contributed_commands.yaml
-// Add to grammar with scope: keyword.command.community.stata
-```
+// Load commands from YAML
+const sscCommands = loadYAML('commands/ssc_contributed_commands.yaml');
+const githubCommands = loadYAML('commands/github_contributed_commands.yaml');
 
-Respect `language-stata.enableCommunityCommands` setting.
+// Inject into grammar with scope: keyword.command.community.stata
+```
 
 ### 3. Custom Command Support
 
-Read user-defined commands from settings:
+Allow users to define custom commands via settings:
 
 ```json
 {
@@ -98,105 +99,42 @@ Read user-defined commands from settings:
 
 Inject as `keyword.command.custom.stata` patterns at runtime.
 
-### 4. Theme Refinement
+### 4. README and Documentation
 
-Verify both themes cover all new scopes:
-- `themes/stata-glow-official.json`
-- `themes/stata-glow-modern.json`
+Update `README.md` with:
+- Screenshots showing highlighting features
+- Installation instructions
+- Configuration options
+- Contribution guidelines
 
-Add any missing scope color mappings for:
-- `keyword.command.community.stata`
-- `keyword.command.custom.stata`
-- `constant.language.factorvars.stata`
-- Any other new scopes
+### 5. Publishing Preparation
 
-### 5. Documentation
-
-- Update `README.md` with usage screenshots
-- Document all available settings
-- Create user guide for customization
+- [ ] Update `CHANGELOG.md` with all changes
+- [ ] Verify `package.json` metadata (publisher, repository, etc.)
+- [ ] Test with VS Code Marketplace preview
+- [ ] Create `.vsix` package for distribution
+- [ ] Publish to VS Code Marketplace
 
 ---
 
-## Key Files to Modify
+## Testing Instructions
 
-| File | Changes Needed |
-|------|---------------|
-| `extension.js` | Add dynamic grammar injection logic |
-| `themes/*.json` | Add missing scope colors |
-| `README.md` | User documentation and screenshots |
-| `CHANGELOG.md` | Update with Phase 2/3 changes |
+### Launch Extension Development Host
 
----
+1. Open StataGlow folder in VS Code/Positron
+2. Press `F5` to launch Extension Development Host
+3. In new window, open any `.do` file
+4. Verify highlighting works
 
-## Testing Checklist
+### Token Inspection
 
-Before starting Phase 3, verify grammar in `examples/comprehensive-syntax-test.do`:
+1. Open a Stata file
+2. `Ctrl+Shift+P` → "Developer: Inspect Editor Tokens and Scopes"
+3. Click any token to see assigned scope and color
 
-- [ ] **Comments**: All 4 types render in comment color
-- [ ] **Strings**: Regular and compound strings highlighted
-- [ ] **Macros**: Local and global macros have distinct colors
-- [ ] **Functions**: 300+ functions recognized with parameters
-- [ ] **Operators**: Arithmetic, logical, comparison visible
-- [ ] **Factor Variables**: `i.`, `c.`, `o.` highlighted
-- [ ] **Control Flow**: `if`, `foreach`, `while` as keywords
-- [ ] **Official Commands**: 176 Stata 19 commands recognized
-- [ ] **Prefixes**: `by`, `quietly`, `capture` highlighted
-- [ ] **Constants**: Numbers and missing values colored
+### Test File
 
----
-
-## Installation Notes
-
-### Python Build Script (RECOMMENDED)
-
-Python version is available and requires **PyYAML**:
-
-```bash
-# Install PyYAML
-pip install PyYAML
-
-# Run build
-python scripts/build-grammar.py
-```
-
-**Advantages**: No Node.js needed, Python more available in data science
-
-### Node.js (Alternative)
-
-Node.js is needed for `npm run build` but is **not installed** on the current system.
-
-**To install Node.js**:
-1. Visit https://nodejs.org/
-2. Download LTS version
-3. Run installer with default options
-4. Restart VS Code/Positron
-5. Verify: `node --version`
-
-### Testing Without Build
-
-Grammar was manually created. You can test highlighting immediately:
-1. Open `examples/comprehensive-syntax-test.do`
-2. Run: `Developer: Reload Window`
-3. Verify highlighting applies
-
----
-
-## Common Commands
-
-```bash
-# Build grammar from YAML registries (requires Node.js)
-npm run build
-
-# Validate command registry
-npm run validate
-
-# Run tests
-npm run test
-
-# Install dependencies
-npm install
-```
+Use `examples/comprehensive-syntax-test.do` to verify all features.
 
 ---
 
@@ -204,38 +142,68 @@ npm install
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     Extension Flow                          │
+│                   Syntax Highlighting Flow                  │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  User Settings ──▶ extension.js ──▶ Grammar Injection       │
-│       │                                    │                │
-│       ▼                                    ▼                │
-│  ┌──────────┐                      ┌──────────────┐         │
-│  │ Toggle   │                      │ stata.json   │         │
-│  │ Settings │                      │ (modified)   │         │
-│  └──────────┘                      └──────────────┘         │
-│                                                             │
-│  Custom ──▶ config-manager.js ──▶ Runtime Patterns          │
-│  Commands                                                   │
+│  Stata File ──▶ stata.json (grammar) ──▶ Token Scopes      │
+│                                              │              │
+│                                              ▼              │
+│                                         Theme JSON          │
+│                                              │              │
+│                                              ▼              │
+│                                      Rendered Colors        │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
+### Key Insight from Phase 3
+
+**Every grammar scope must have a matching theme rule.** If a pattern matches but doesn't render with color, check that the theme has a `tokenColors` entry for that scope.
+
 ---
 
-## Scope Reference
+## Scope Reference (Complete)
 
-| Scope | Usage | Theme Color (Official) |
-|-------|-------|----------------------|
+| Scope | Usage | Theme Color |
+|-------|-------|-------------|
 | `keyword.command.official.stata` | Stata 19 commands | Blue |
 | `keyword.command.community.stata` | SSC/GitHub commands | Blue + Italic |
 | `keyword.command.custom.stata` | User commands | Purple |
+| `keyword.functions.data.stata` | Data manipulation commands | Blue |
+| `keyword.operator.arithmetic.stata` | `+ - * / ^` | Orange/bold |
+| `keyword.operator.comparison.stata` | `< > == != <= >=` | Gold |
+| `keyword.operator.logical.stata` | `& | !` | Gold |
+| `keyword.control.flow.stata` | `if else foreach forvalues while` | Cyan/bold |
+| `keyword.control.conditional.stata` | Conditional expressions | Cyan/bold |
 | `support.function.builtin.stata` | Built-in functions | Yellow |
-| `variable.other.local.stata` | Local macros | Orange |
-| `variable.other.global.stata` | Global macros | Orange (bold) |
-| `string.quoted.double.stata` | Strings | Green |
-| `comment.*` | Comments | Gray |
-| `constant.numeric.*` | Numbers | Cyan |
+| `variable.other.macro.local.stata` | Local macros | Light Blue |
+| `variable.other.macro.global.stata` | Global macros | Teal/bold |
+| `string.quoted.double.stata` | Regular strings | Orange |
+| `string.quoted.double.compound.stata` | Compound strings | Orange/italic |
+| `constant.numeric.stata` | Numbers | Green |
+| `constant.language.missing.stata` | Missing values (`.`, `.a`-`.z`) | Red/bold |
+| `constant.language.builtin.stata` | `_N _n _pi _rc _merge` | Light Blue/bold |
+| `constant.language.factorvars.stata` | `i. c. o.` variables | Gold/bold |
+| `comment.*` | All comment types | Green |
+| `storage.type.function.stata` | Prefixes (`by quietly`) | Blue |
+
+---
+
+## Common Commands
+
+```bash
+# Launch Extension Development Host
+# Press F5 in VS Code/Positron
+
+# Build grammar from YAML (if needed)
+npm run build
+
+# Validate command registry
+npm run validate
+
+# Package extension
+vsce package
+```
 
 ---
 
@@ -245,10 +213,10 @@ npm install
 - **File purposes**: See `PROJECT_STRUCTURE.md`
 - **Phase 1 work**: See `PHASE1_COMPLETE.md`
 - **Phase 2 work**: See `PHASE2_COMPLETE.md`
+- **Phase 3 work**: See `PHASE3_COMPLETE.md`
 - **How to add commands**: See `CONTRIBUTING.md`
-- **Build pipeline**: See `scripts/build-grammar.js`
 
 ---
 
-**Phase 2 Completed**: February 12, 2026  
-**Ready for**: Phase 3 (Dynamic Features & Publishing)
+**Phase 3 Completed**: February 12, 2026  
+**Ready for**: Phase 4 (Dynamic Features & Publishing)

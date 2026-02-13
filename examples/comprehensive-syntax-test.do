@@ -105,7 +105,7 @@ local ++count
 local --count
 
 // Local Macro Usage
-display "`myvar'"
+display "`myvar'" 
 regress mpg `myvar'
 local result = `count' * 2
 
@@ -116,7 +116,9 @@ global datapath "C:/data/project"
 
 // Global Macro Usage
 regress $depvar $xvars
+regress ${depvar} ${xvars}
 display "$depvar and $xvars"
+display "$depvar and ${xvars}"
 use "$datapath/mydata.dta", clear
 
 // Extended Macro Functions

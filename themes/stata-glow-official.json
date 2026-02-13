@@ -25,6 +25,13 @@
       }
     },
     {
+      "scope": "keyword.functions.data.stata",
+      "settings": {
+        "foreground": "#569cd6",
+        "fontStyle": ""
+      }
+    },
+    {
       "scope": "keyword.command.community.stata",
       "settings": {
         "foreground": "#569cd6",
@@ -35,7 +42,7 @@
       "scope": "keyword.command.custom.stata",
       "settings": {
         "foreground": "#c586c0",
-        "fontStyle": ""
+        "fontStyle": "bold"
       }
     },
     {
@@ -53,7 +60,8 @@
     {
       "scope": "variable.other.macro.global.stata",
       "settings": {
-        "foreground": "#4ec9b0"
+        "foreground": "#4ec9b0",
+        "fontStyle": "bold"
       }
     },
     {
@@ -63,21 +71,133 @@
       }
     },
     {
+      "scope": "string.quoted.double.compound.stata",
+      "settings": {
+        "foreground": "#ce9178",
+        "fontStyle": "italic"
+      }
+    },
+    {
       "scope": "keyword.operator.arithmetic.stata",
       "settings": {
-        "foreground": "#d4d4d4"
+        "foreground": "#ce9178",
+        "fontStyle": "bold"
       }
     },
     {
       "scope": "keyword.operator.comparison.stata",
       "settings": {
-        "foreground": "#d4d4d4"
+        "foreground": "#d7ba7d",
+        "fontStyle": ""
+      }
+    },
+    {
+      "scope": "keyword.operator.logical.stata",
+      "settings": {
+        "foreground": "#d7ba7d",
+        "fontStyle": ""
+      }
+    },
+    {
+      "scope": "keyword.operator.macro.stata",
+      "settings": {
+        "foreground": "#d7ba7d",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "keyword.control.conditional.stata",
+      "settings": {
+        "foreground": "#4ec9b0",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "keyword.control.flow.stata",
+      "settings": {
+        "foreground": "#4ec9b0",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "keyword.control.flow.prefix.stata",
+      "settings": {
+        "foreground": "#569cd6",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "keyword.other.extended-macro.stata",
+      "settings": {
+        "foreground": "#dcdcaa",
+        "fontStyle": "bold"
       }
     },
     {
       "scope": "constant.numeric.stata",
       "settings": {
         "foreground": "#b5cea8"
+      }
+    },
+    {
+      "scope": "constant.numeric.float.stata",
+      "settings": {
+        "foreground": "#b5cea8"
+      }
+    },
+    {
+      "scope": "constant.numeric.integer.decimal.stata",
+      "settings": {
+        "foreground": "#b5cea8"
+      }
+    },
+    {
+      "scope": "constant.language.missing.stata",
+      "settings": {
+        "foreground": "#f48771",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "constant.language.builtin.stata",
+      "settings": {
+        "foreground": "#9cdcfe",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "constant.language.factorvars.stata",
+      "settings": {
+        "foreground": "#d7ba7d",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "storage.type.function.stata",
+      "settings": {
+        "foreground": "#569cd6",
+        "fontStyle": ""
+      }
+    },
+    {
+      "scope": "storage.type.scalar.stata",
+      "settings": {
+        "foreground": "#c586c0",
+        "fontStyle": ""
+      }
+    },
+    {
+      "scope": "storage.type.matrix.stata",
+      "settings": {
+        "foreground": "#c586c0",
+        "fontStyle": ""
+      }
+    },
+    {
+      "scope": "keyword.macro.stata",
+      "settings": {
+        "foreground": "#569cd6",
+        "fontStyle": "bold"
       }
     }
   ]

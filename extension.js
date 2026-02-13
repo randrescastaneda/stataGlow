@@ -5,6 +5,17 @@ let configManager_instance;
 
 async function activate(context) {
   console.log('StataGlow extension activated');
+  
+  // Ensure Stata language is registered
+  try {
+    const languages = await vscode.languages.getLanguages();
+    console.log('Registered languages:', languages);
+    if (!languages.includes('stata')) {
+      console.warn('Stata language not found in registered languages');
+    }
+  } catch (error) {
+    console.error('Error checking languages:', error);
+  }
 
   configManager_instance = new configManager.ConfigManager();
   await configManager_instance.initialize(context);

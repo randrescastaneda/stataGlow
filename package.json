@@ -25,9 +25,7 @@
     "Programming Languages",
     "Themes"
   ],
-  "activationEvents": [
-    "onLanguage:stata"
-  ],
+  "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
     "languages": [
@@ -42,14 +40,21 @@
           ".ado",
           ".mata"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icon.png",
+          "dark": "./icon.png"
+        }
       }
     ],
     "grammars": [
       {
         "language": "stata",
         "scopeName": "source.stata",
-        "path": "./grammars/stata.json"
+        "path": "./grammars/stata.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.stata": "stata"
+        }
       }
     ],
     "themes": [
