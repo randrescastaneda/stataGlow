@@ -1,5 +1,6 @@
 node_modules/
 *.vsix
+*.vsix.sha256
 .DS_Store
 *.log
 .vscode-test/
@@ -16,3 +17,6 @@ dist/
 *.tmp
 build/
 temp/
+
+# Process documentation (development history, kept in repo but excluded from package)
+.process/

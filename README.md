@@ -213,6 +213,23 @@ We welcome contributions! Here's how to add commands:
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
+## Development Documentation
+
+For developers working on StataGlow or those interested in the development process:
+
+- **Development History**: See `.process/` directory for complete phase documentation
+  - Phase 1: Foundation & Repository Setup
+  - Phase 2: Grammar Implementation
+  - Phase 3: Highlighting Refinements
+  - Phase 4A: Theming & Branding
+  - Phase 4B: Marketplace Preparation
+- **Architecture**: See `.process/PROJECT_STRUCTURE.md`
+- **Complete Summary**: See `.process/IMPLEMENTATION_SUMMARY.md`
+- **Next Steps**: See `.process/NEXT_SESSION_HANDOFF.md`
+- **Publishing Guide**: See `MARKETPLACE_GUIDE.md` in repository root
+
+The `.process/` directory contains comprehensive development documentation that is excluded from extension packages but preserved in the Git repository for reference.
+
 ## Related
 
 - **Original Extension**: [kylebarron/language-stata](https://github.com/kylebarron/language-stata)

@@ -68,12 +68,12 @@ def create_vsix(project_root: Path):
                 relative_path = file_path.relative_to(project_root)
                 
                 # Skip unwanted files
-                skip_extensions = {'.pyc', '.pyo', '.git', '__pycache__', '.pytest_cache'}
-                if any(str(relative_path).startswith(skip) for skip in skip_extensions):
+                skip_extensions = {'.pyc', '.pyo', '.git', '__pycache__', '.pytest_cache', '.vsix', '.vsix.sha256'}
+                if any(str(relative_path).startswith(skip) or str(relative_path).endswith(skip) for skip in skip_extensions):
                     continue
                 
-                # Skip node_modules, .vscode, scripts
-                skip_dirs = {'node_modules', '.vscode', '.git', '.gitignore', 'scripts', '.svg'}
+                # Skip node_modules, .vscode, scripts, .process (dev docs)
+                skip_dirs = {'node_modules', '.vscode', '.git', '.gitignore', 'scripts', '.svg', '.process', 'temp'}
                 if any(part in skip_dirs for part in relative_path.parts):
                     continue
                 
