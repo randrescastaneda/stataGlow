@@ -10,17 +10,25 @@ Modern, customizable Stata syntax highlighting for VS Code and Positron.
 - User-defined custom commands
 - Three-tier visual distinction for command sources
 
-🎨 **Customizable Highlighting**
+🎨 **6 Professional Themes**
+- **StataGlow Official** - VS Code default palette
+- **StataGlow Modern** - GitHub Copilot-inspired dark theme
+- **StataGlow Kiwi** - Soft, minimal aesthetic for eye comfort
+- **StataGlow OneDark** - Atom One Dark color palette
+- **StataGlow Dracula** - Dracula official theme colors
+- **StataGlow Light** - Light background for accessibility
+
+🔧 **Customizable Highlighting**
 - Toggle on/off by category: functions, macros, strings, regex, factor variables, comments
-- Two built-in themes: Official and Modern
+- All themes fully support Stata-specific syntax
 - Support for user-defined themes via VS Code settings
 
-🔧 **User Extensions**
+📦 **User Extensions**
 - Add personal commands via `language-stata.customCommands` setting
 - Load custom commands from `.vscode/stata-custom.json`
 - Community contributions welcome for SSC/GitHub packages
 
-📦 **Zero Dependencies**
+⚡ **Zero Dependencies**
 - Extension ships with no runtime dependencies
 - All syntax highlighting compiled at build time
 - Pure VS Code extension architecture
@@ -37,7 +45,7 @@ Modern, customizable Stata syntax highlighting for VS Code and Positron.
 ### From GitHub Release
 
 1. Download the `.vsix` file from [Releases](https://github.com/randrescastaneda/stataGlow/releases)
-2. In VS Code: Ctrl+Shift+P → "Extensions: Install from VSIX"
+2. In VS Code (or Positron): Ctrl+Shift+P → "Extensions: Install from VSIX"
 3. Select the downloaded `.vsix` file
 
 ## Usage
@@ -98,8 +106,25 @@ Or create `.vscode/stata-custom.json` in your workspace:
 
 #### Choose a Theme
 
-1. In VS Code, press Ctrl+K Ctrl+T (or Cmd+K Cmd+T)
-2. Select **StataGlow Official** or **StataGlow Modern**
+1. In VS Code or Positron, press **Ctrl+K Ctrl+T** (or **Cmd+K Cmd+T** on macOS)
+2. Select your preferred theme from the list:
+   - **StataGlow Official** - Classic VS Code dark theme
+   - **StataGlow Modern** - GitHub Copilot dark theme
+   - **StataGlow Kiwi** - Soft, minimal Nordic-inspired palette
+   - **StataGlow OneDark** - Atom One Dark colors
+   - **StataGlow Dracula** - Dracula theme colors
+   - **StataGlow Light** - Light background for daytime coding
+
+### Available Themes
+
+| Theme | Type | Best For | Colors |
+|-------|------|----------|--------|
+| **Official** | Dark | Default users | VS Code palette |
+| **Modern** | Dark | GitHub Copilot users | GitHub palette |
+| **Kiwi** | Dark | Eye comfort | Muted, low saturation |
+| **OneDark** | Dark | Atom fans | Atom One Dark palette |
+| **Dracula** | Dark | Popular themes | Dracula palette |
+| **Light** | Light | Daytime/accessibility | High contrast |
 
 ## Command Tiers & Highlighting
 

@@ -94,6 +94,12 @@ gen random_int = runiformint(1, 100)
 gen random_binomial = rbinomial(10, 0.5)
 gen random_poisson = rpoisson(5)
 
+
+// Double side commands
+
+bootstrap, reps(100): regress y x
+by group: regress y x
+
 // =================================================================
 // SECTION 3: MACROS (Local & Global)
 // =================================================================

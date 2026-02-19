@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e1e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d0d0d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#61afef;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#56b6c2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#98c379;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" fill="url(#bgGradient)"/>
+  
+  <!-- Outer circle glow -->
+  <circle cx="256" cy="256" r="240" fill="none" stroke="url(#glowGradient)" stroke-width="8" opacity="0.3"/>
+  
+  <!-- Main circle -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#glowGradient)" stroke-width="12"/>
+  
+  <!-- Inner decorative circles representing data/analysis -->
+  <g opacity="0.8">
+    <circle cx="200" cy="200" r="35" fill="none" stroke="#61afef" stroke-width="4"/>
+    <circle cx="312" cy="200" r="35" fill="none" stroke="#56b6c2" stroke-width="4"/>
+    <circle cx="256" cy="320" r="35" fill="none" stroke="#98c379" stroke-width="4"/>
+  </g>
+  
+  <!-- Center element - Stata S inspired design -->
+  <g transform="translate(256, 256)">
+    <!-- Statistical wave/curve -->
+    <path d="M -40 20 Q -20 -30 0 -20 Q 20 -10 40 20" 
+          fill="none" stroke="url(#glowGradient)" stroke-width="6" 
+          stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Connecting dots -->
+    <circle cx="-40" cy="20" r="5" fill="#61afef"/>
+    <circle cx="0" cy="-20" r="5" fill="#56b6c2"/>
+    <circle cx="40" cy="20" r="5" fill="#98c379"/>
+  </g>
+  
+  <!-- Accent lines representing code -->
+  <g opacity="0.6" stroke="#61afef" stroke-width="3" stroke-linecap="round">
+    <line x1="100" y1="150" x2="150" y2="150"/>
+    <line x1="362" y1="150" x2="412" y1="150"/>
+    <line x1="100" y1="362" x2="150" y2="362"/>
+    <line x1="362" y1="362" x2="412" y1="362"/>
+  </g>
+</svg>

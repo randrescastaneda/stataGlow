@@ -67,6 +67,26 @@
         "label": "StataGlow Modern",
         "uiTheme": "vs-dark",
         "path": "./themes/stata-glow-modern.json"
+      },
+      {
+        "label": "StataGlow Kiwi",
+        "uiTheme": "vs-dark",
+        "path": "./themes/stata-glow-kiwi.json"
+      },
+      {
+        "label": "StataGlow OneDark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/stata-glow-onedark.json"
+      },
+      {
+        "label": "StataGlow Dracula",
+        "uiTheme": "vs-dark",
+        "path": "./themes/stata-glow-dracula.json"
+      },
+      {
+        "label": "StataGlow Light",
+        "uiTheme": "vs",
+        "path": "./themes/stata-glow-light.json"
       }
     ],
     "configuration": {
