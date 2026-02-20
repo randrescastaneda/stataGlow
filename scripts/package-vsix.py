@@ -53,7 +53,6 @@ def create_vsix(project_root: Path):
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Code"/>
-    <InstallationTarget Id="Posit.Positron"/>
   </Installation>
   <Dependencies/>
   <Assets>

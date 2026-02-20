@@ -5,6 +5,7 @@
   "version": "2.0.0",
   "description": "Modern, customizable Stata syntax highlighting for VS Code and Positron",
   "license": "MIT",
+  "homepage": "https://github.com/randrescastaneda/stataGlow",
   "repository": {
     "type": "git",
     "url": "https://github.com/randrescastaneda/stataGlow"
@@ -12,6 +13,8 @@
   "bugs": {
     "url": "https://github.com/randrescastaneda/stataGlow/issues"
   },
+  "qna": "https://github.com/randrescastaneda/stataGlow/discussions",
+  "icon": "icon.png",
   "keywords": [
     "stata",
     "syntax-highlighting",
@@ -137,15 +140,5 @@
         }
       }
     }
-  },
-  "scripts": {
-    "build": "node scripts/build-grammar.js",
-    "build:py": "python scripts/build-grammar.py",
-    "validate": "node scripts/validate-commands.js",
-    "test": "node scripts/test.js"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "js-yaml": "^4.1.0"
   }
 }
