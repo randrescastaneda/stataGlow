@@ -18,5 +18,8 @@ dist/
 build/
 temp/
 
-# Process documentation (development history, kept in repo but excluded from package)
+# VS Code workspace settings (optional - remove this line if you want to share settings)
+.vscode/
+
+# Process documentation and development files (kept locally but excluded from git)
 .process/
