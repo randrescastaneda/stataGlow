@@ -303,7 +303,7 @@
               "name": "keyword.macro.stata"
             }
           },
-          "end": "(?=\\n|//|/\\*)",
+          "end": "(?=$|//|/\\*)",
           "patterns": [
             {
               "match": "\\w{1,31}",
