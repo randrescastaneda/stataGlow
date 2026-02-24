@@ -1,22 +1,6 @@
 {
   "name": "StataGlow Modern",
-  "type": "dark",
-  "colors": {
-    "editor.background": "#0d1117",
-    "editor.foreground": "#c9d1d9",
-    "editor.lineNumberActiveBackground": "#30363d",
-    "editor.lineNumberForeground": "#6e7681",
-    "editor.selectionBackground": "#388bfd33",
-    "editorCursor.foreground": "#58a6ff",
-    "editorWhitespace.foreground": "#6e768166"
-  },
   "tokenColors": [
-    {
-      "scope": "comment",
-      "settings": {
-        "foreground": "#8b949e"
-      }
-    },
     {
       "scope": "keyword.command.official.stata",
       "settings": {
@@ -198,6 +182,40 @@
       "settings": {
         "foreground": "#58a6ff",
         "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "keyword.control.mata.stata",
+      "settings": {
+        "foreground": "#e06c75",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "storage.type.mata.stata",
+      "settings": {
+        "foreground": "#c678dd"
+      }
+    },
+    {
+      "scope": "keyword.control.mata.flow.stata",
+      "settings": {
+        "foreground": "#c678dd",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "storage.type.function.mata.stata",
+      "settings": {
+        "foreground": "#c678dd",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": "support.function.mata.stata",
+      "settings": {
+        "foreground": "#98c379",
+        "fontStyle": "italic"
       }
     }
   ]

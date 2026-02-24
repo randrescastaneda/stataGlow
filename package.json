@@ -2,7 +2,7 @@
   "name": "stataglow",
   "displayName": "StataGlow",
   "publisher": "randrescastaneda",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Modern, customizable Stata syntax highlighting for VS Code and Positron",
   "license": "MIT",
   "homepage": "https://github.com/randrescastaneda/stataGlow",
@@ -25,10 +25,12 @@
     "vscode": "^1.70.0"
   },
   "categories": [
-    "Programming Languages",
-    "Themes"
+    "Programming Languages"
   ],
   "activationEvents": [],
+  "scripts": {
+    "build": "python .process/scripts/build_grammar_v2.py"
+  },
   "main": "./extension.js",
   "contributes": {
     "languages": [
@@ -60,83 +62,66 @@
         }
       }
     ],
-    "themes": [
-      {
-        "label": "StataGlow Official",
-        "uiTheme": "vs-dark",
-        "path": "./themes/stata-glow-official.json"
-      },
-      {
-        "label": "StataGlow Modern",
-        "uiTheme": "vs-dark",
-        "path": "./themes/stata-glow-modern.json"
-      },
-      {
-        "label": "StataGlow Kiwi",
-        "uiTheme": "vs-dark",
-        "path": "./themes/stata-glow-kiwi.json"
-      },
-      {
-        "label": "StataGlow OneDark",
-        "uiTheme": "vs-dark",
-        "path": "./themes/stata-glow-onedark.json"
-      },
-      {
-        "label": "StataGlow Dracula",
-        "uiTheme": "vs-dark",
-        "path": "./themes/stata-glow-dracula.json"
-      },
-      {
-        "label": "StataGlow Light",
-        "uiTheme": "vs",
-        "path": "./themes/stata-glow-light.json"
-      }
-    ],
     "configuration": {
       "title": "StataGlow",
       "properties": {
-        "language-stata.highlight.functions": {
+        "stataGlow.colorScheme": {
+          "type": "string",
+          "default": "Official",
+          "enum": ["Official", "Modern", "Kiwi", "OneDark", "Dracula", "Light", "None"],
+          "enumDescriptions": [
+            "VS Code Dark+ inspired colors for Stata syntax",
+            "GitHub Dark Dimmed inspired colors for Stata syntax",
+            "Nord-inspired fresh colors for Stata syntax",
+            "Atom One Dark inspired colors for Stata syntax",
+            "Dracula-inspired colors for Stata syntax",
+            "Light mode colors for Stata syntax",
+            "Disable StataGlow color injection (use your theme's defaults)"
+          ],
+          "description": "Choose a StataGlow color scheme for Stata files. This only affects Stata syntax highlighting and does not change your global editor theme."
+        },
+        "stataGlow.highlight.functions": {
           "type": "boolean",
           "default": true,
           "description": "Highlight built-in statistical and mathematical functions"
         },
-        "language-stata.highlight.macros": {
+        "stataGlow.highlight.macros": {
           "type": "boolean",
           "default": true,
           "description": "Highlight local and global macros"
         },
-        "language-stata.highlight.strings": {
+        "stataGlow.highlight.strings": {
           "type": "boolean",
           "default": true,
           "description": "Highlight strings and compound strings"
         },
-        "language-stata.highlight.regex": {
+        "stataGlow.highlight.regex": {
           "type": "boolean",
           "default": true,
           "description": "Highlight regular expressions in regex functions"
         },
-        "language-stata.highlight.factorVariables": {
+        "stataGlow.highlight.factorVariables": {
           "type": "boolean",
           "default": true,
           "description": "Highlight factor variable notation (i., c., o.)"
         },
-        "language-stata.highlight.comments": {
+        "stataGlow.highlight.comments": {
           "type": "boolean",
           "default": true,
           "description": "Highlight comments"
         },
-        "language-stata.enableCommunityCommands": {
+        "stataGlow.enableCommunityCommands": {
           "type": "boolean",
           "default": true,
           "description": "Enable highlighting of SSC/GitHub community-contributed commands"
         },
-        "language-stata.customCommands": {
+        "stataGlow.customCommands": {
           "type": "array",
           "items": {
             "type": "string"
           },
           "default": [],
-          "description": "Array of custom user-defined commands to highlight"
+          "description": "Array of custom user-defined commands to highlight. These will be highlighted with a distinctive style in all Stata files."
         }
       }
     }
