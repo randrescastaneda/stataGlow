@@ -6,7 +6,7 @@ Thank you for your interest in contributing to StataGlow! We welcome contributio
 
 ### Prerequisites
 
-- Node.js 14+
+- Python 3.8+ with the `pyyaml` package
 - Git
 - Basic familiarity with YAML and JSON
 
@@ -18,8 +18,8 @@ Thank you for your interest in contributing to StataGlow! We welcome contributio
 git clone https://github.com/YOUR_USERNAME/stataGlow.git
 cd stataGlow
 
-# Install dependencies
-npm install
+# Install build dependency
+pip install pyyaml
 
 # Create a feature branch
 git checkout -b add-myfeature
@@ -39,43 +39,31 @@ We actively welcome community contributions. To add SSC or GitHub packages:
 
 Add entries to the appropriate file:
 
-```bash
-# For SSC packages
-nano commands/ssc_contributed_commands.yaml
-
-# For GitHub packages
-nano commands/github_contributed_commands.yaml
-```
+- `commands/ssc_contributed_commands.yaml` — for SSC packages
+- `commands/github_contributed_commands.yaml` — for GitHub packages
 
 #### Step 2: Command Entry Format
 
 ```yaml
 - name: "packagename"
   category: "estimation"                 # See category list below
-  status: "stable"                       # stable | experimental
   description: "Brief one-line description"
-  url: "https://github.com/user/repo or https://ssc.command.com/..."
-  author: "Author Name"
-  since: "1.0"                           # Package version
+  url: "https://github.com/user/repo"
 ```
 
 #### Step 3: Build & Test
 
 ```bash
 # Rebuild the grammar
-npm run build
+python .process/scripts/build_grammar_v2.py
 
-# Validate the registry
-npm run validate
-
-# Check highlighting in the test file
-# Open: examples/test_all_commands.do in VS Code
+# Open a .do file in VS Code / Positron and verify highlighting
 ```
 
 #### Step 4: Submit PR
 
 ```bash
-git add commands/
+git add commands/ grammars/
 git commit -m "Add: SSC package 'packagename' for category XYZ"
 git push origin add-myfeature
 ```
@@ -90,19 +78,17 @@ Create a PR with:
 
 Use one of these categories when adding commands:
 
-| Category | Description | Icon |
-|----------|-------------|------|
-| `estimation` | Estimation & inference | 📊 |
-| `panel_longitudinal` | Panel/longitudinal data | 📈 |
-| `causal_inference` | Causal inference | 🔗 |
-| `lasso_ml` | Lasso & machine learning | 🤖 |
-| `data_management` | Data manipulation & frames | 🔧 |
-| `bayesian` | Bayesian analysis | 📉 |
-| `survival` | Survival analysis | ⏱️ |
-| `tables_collections` | Tables & collections | 📋 |
-| `spatial` | Spatial analysis | 🗺️ |
-| `ssc_commands` | Generic SSC packages | 📦 |
-| `github_commands` | Generic GitHub packages | 🐙 |
+| Category | Description |
+|----------|-------------|
+| `estimation` | Estimation & inference |
+| `panel_timeseries` | Panel & time-series data |
+| `causal_inference` | Causal inference |
+| `data_management` | Data manipulation |
+| `statistics` | Summary statistics & distributions |
+| `survival` | Survival analysis |
+| `spatial` | Spatial analysis |
+| `visualization` | Plotting & output |
+| `utilities` | General utilities |
 
 ## Reporting Issues
 
@@ -122,7 +108,7 @@ Found a bug or missing command?
 Include:
 - Stata version
 - Extension version
-- VS Code/Positron version
+- VS Code / Positron version
 - Steps to reproduce (for bugs)
 - Expected vs. actual behavior
 - Screenshots (if visual issue)
@@ -138,12 +124,13 @@ Include:
 
 ### Testing
 
-Before submitting, run:
+Before submitting:
 
 ```bash
-npm run validate    # Check command registry
-npm run build       # Rebuild grammar
-npm run test        # Run tests
+# Rebuild grammar
+python .process/scripts/build_grammar_v2.py
+
+# Open a .do or .ado file and verify highlighting
 ```
 
 ### Commit Messages
@@ -168,28 +155,28 @@ refactor(build): optimize grammar generation
 
 ### Making Changes
 
-1. Create a branch from `master`
+1. Create a branch from `main`
 2. Make your changes
-3. Commit with meaningful messages
-4. Push to your fork
-5. Submit a PR
+3. Rebuild the grammar if you modified command registries
+4. Commit with meaningful messages
+5. Push to your fork
+6. Submit a PR
 
 ### PR Checklist
 
 Before submitting your PR, ensure:
 
 - [ ] Code follows style guide
-- [ ] All tests pass: `npm run test`
-- [ ] Grammar validates: `npm run validate`
-- [ ] Build succeeds: `npm run build`
+- [ ] Grammar builds successfully: `python .process/scripts/build_grammar_v2.py`
+- [ ] Highlighting looks correct on test `.do` files
 - [ ] Updated relevant documentation
 - [ ] PR description clearly explains changes
 - [ ] Commits are atomic and well-messaged
 
 ## Questions?
 
-- 💬 [Start a Discussion](https://github.com/randrescastaneda/stataGlow/discussions)
-- 📧 [Open an Issue](https://github.com/randrescastaneda/stataGlow/issues) (label: question)
+- [Start a Discussion](https://github.com/randrescastaneda/stataGlow/discussions)
+- [Open an Issue](https://github.com/randrescastaneda/stataGlow/issues) (label: question)
 
 ## Recognition
 
@@ -198,4 +185,4 @@ Contributors will be recognized in:
 - Release notes
 - GitHub contributors page
 
-Thank you for making StataGlow better! 🎉
+Thank you for making StataGlow better!

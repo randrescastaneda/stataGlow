@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-02-24
+
+### Fixed
+- **Settings prefix**: Renamed all configuration from `language-stata.*` to `stataGlow.*`; one-time automatic migration of old settings on activation
+- **Theme scoping**: StataGlow color schemes no longer override other languages (R, Python, etc.). Themes are now injected only for `[stata]` files via `editor.tokenColorCustomizations`
+- **Custom commands**: Fixed `customCommands` setting — now works via a `DocumentSemanticTokensProvider` (TextMate grammars are static; custom commands require runtime injection)
+- **Config type mismatch**: Fixed bug where `.stataGlowCommands` file objects (`{name, description}`) were mixed into string array
+
+### Added
+- **Mata highlighting**: `mata`/`mata:` blocks are now recognized with distinct colors — Mata types (`real`, `string`, `void`, `pointer`, `transmorphic`, etc.), control flow, function definitions, and 100+ Mata functions get dedicated scopes
+- **569 official commands**: Unified command system with abbreviation support (e.g. `su`→`summarize`, `reg`→`regress`). Commands grouped by 8 scopes: control flow, prefixes, storage types, programming, data management, statistics, panel/time-series, survival, and advanced estimation
+- **100 SSC community commands**: `reghdfe`, `estout`, `outreg2`, `ivreg2`, `psmatch2`, `ftools`, `coefplot`, `binscatter`, `rdrobust`, and 91 more
+- **Color scheme setting**: New `stataGlow.colorScheme` enum (Official/Modern/Kiwi/OneDark/Dracula/Light/None) replaces global theme selection
+- **`deactivate()` cleanup**: Extension properly removes injected color rules when disabled or uninstalled
+- **Build script**: `python .process/scripts/build_grammar_v2.py` regenerates `stata.json` from YAML registries
+
+### Changed
+- Removed `contributes.themes` from `package.json` (themes were global, overriding all languages)
+- Merged 35 hand-coded `builtin-commands` rules + 176 YAML commands into one unified system
+- Grammar now has 22 repository groups including `official-commands`, `community-commands`, `mata`, and `mata-internals`
+- All 6 theme files now contain 32 Stata-scoped rules each (27 base + 5 Mata)
+
+### Removed
+- Old `builtin-commands` grammar section (replaced by unified `official-commands`)
+- Global theme contributions (replaced by language-scoped injection)
+
 ## [2.0.0] - 2026-02-12
 
 ### Added

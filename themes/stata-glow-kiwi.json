@@ -1,23 +1,6 @@
 {
   "name": "StataGlow Kiwi",
-  "type": "dark",
-  "colors": {
-    "editor.background": "#1e1e1e",
-    "editor.foreground": "#c5c8c6",
-    "editor.lineNumberActiveBackground": "#3a3a3a",
-    "editor.lineNumberForeground": "#6e7781",
-    "editor.selectionBackground": "#3d4450",
-    "editorCursor.foreground": "#a3be8c",
-    "editorWhitespace.foreground": "#4d4d4d"
-  },
   "tokenColors": [
-    {
-      "scope": "comment",
-      "settings": {
-        "foreground": "#707070",
-        "fontStyle": "italic"
-      }
-    },
     {
       "scope": "keyword.command.official.stata",
       "settings": {
@@ -192,6 +175,40 @@
       "settings": {
         "foreground": "#88c0d0",
         "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "keyword.control.mata.stata",
+      "settings": {
+        "foreground": "#ff6b6b",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "storage.type.mata.stata",
+      "settings": {
+        "foreground": "#c792ea"
+      }
+    },
+    {
+      "scope": "keyword.control.mata.flow.stata",
+      "settings": {
+        "foreground": "#c792ea",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": "storage.type.function.mata.stata",
+      "settings": {
+        "foreground": "#c792ea",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": "support.function.mata.stata",
+      "settings": {
+        "foreground": "#c3e88d",
+        "fontStyle": "italic"
       }
     }
   ]
