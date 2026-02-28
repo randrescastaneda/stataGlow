@@ -11,6 +11,9 @@
   "foldingStopMarker": "^\\s*\\}",
   "patterns": [
     {
+      "include": "#comments"
+    },
+    {
       "include": "#mata"
     },
     {
@@ -18,9 +21,6 @@
     },
     {
       "include": "#community-commands"
-    },
-    {
-      "include": "#comments"
     },
     {
       "include": "#constants"
@@ -63,13 +63,13 @@
     "comments": {
       "patterns": [
         {
+          "include": "#comments-block"
+        },
+        {
           "include": "#comments-double-slash"
         },
         {
           "include": "#comments-star"
-        },
-        {
-          "include": "#comments-block"
         },
         {
           "include": "#comments-triple-slash"
@@ -77,77 +77,51 @@
       ]
     },
     "comments-block": {
+      "begin": "/\\*",
+      "end": "\\*/",
+      "name": "comment.block.stata",
       "patterns": [
         {
-          "begin": "/\\*",
-          "beginCaptures": {
-            "0": {
-              "name": "punctuation.definition.comment.begin.stata"
-            }
-          },
-          "end": "\\*/",
-          "endCaptures": {
-            "0": {
-              "name": "punctuation.definition.comment.end.stata"
-            }
-          },
-          "name": "comment.block.stata",
-          "patterns": [
-            {
-              "include": "#comments-block"
-            }
-          ]
+          "include": "#comments-block"
         }
       ]
     },
     "comments-star": {
+      "begin": "^\\s*(\\*)(?!/)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.stata"
+        }
+      },
+      "end": "(?=\\n)",
+      "name": "comment.line.star.stata",
       "patterns": [
         {
-          "begin": "^\\s*(\\*)",
-          "beginCaptures": {
-            "0": {
-              "name": "punctuation.definition.comment.stata"
-            }
-          },
-          "end": "(?=\\n)",
-          "name": "comment.line.star.stata",
-          "patterns": [
-            {
-              "begin": "///",
-              "end": "\\n",
-              "name": "comment.line-continuation.stata"
-            }
-          ]
+          "begin": "///",
+          "end": "\\n",
+          "name": "comment.line-continuation.stata"
         }
       ]
     },
     "comments-triple-slash": {
-      "patterns": [
-        {
-          "begin": "(^///|(?<=\\s)///)",
-          "beginCaptures": {
-            "0": {
-              "name": "punctuation.definition.comment.stata"
-            }
-          },
-          "end": "(?=\\n)",
-          "name": "comment.line.triple-slash.stata"
+      "begin": "(^///|(?<=\\s)///)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.stata"
         }
-      ]
+      },
+      "end": "(?=\\n)",
+      "name": "comment.line.triple-slash.stata"
     },
     "comments-double-slash": {
-      "patterns": [
-        {
-          "begin": "(^//|(?<=\\s)//)(?!/)",
-          "beginCaptures": {
-            "0": {
-              "name": "punctuation.definition.comment.stata"
-            }
-          },
-          "end": "(?=\\n)",
-          "name": "comment.line.double-slash.stata"
+      "begin": "(^//|(?<=\\s)//)(?!/)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.stata"
         }
-      ]
+      },
+      "end": "(?=\\n)",
+      "name": "comment.line.double-slash.stata"
     },
     "constants": {
       "patterns": [
@@ -483,12 +457,13 @@
     "operators": {
       "patterns": [
         {
-          "match": "\\+\\+|\\-\\-|\\+|\\-|\\*|\\^",
+          "comment": "Arithmetic operators - exclude /* and */ to avoid capturing block comment delimiters",
+          "match": "\\+\\+|\\-\\-|\\+|\\-|(?<!/)\\*(?!/)|\\^",
           "name": "keyword.operator.arithmetic.stata"
         },
         {
-          "comment": "Division operator - avoid matching in comments (//)",
-          "match": "(?<![\\w.])(?!/)(?:\\s)*/(?![\\w.\\s/])",
+          "comment": "Division operator - avoid matching // comments and /* block comment open",
+          "match": "/(?![/*])",
           "name": "keyword.operator.arithmetic.stata"
         },
         {

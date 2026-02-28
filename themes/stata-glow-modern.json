@@ -217,6 +217,34 @@
         "foreground": "#98c379",
         "fontStyle": "italic"
       }
+    },
+    {
+      "scope": "comment.block.stata",
+      "settings": {
+        "foreground": "#768390",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": "comment.line.double-slash.stata",
+      "settings": {
+        "foreground": "#768390",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": "comment.line.star.stata",
+      "settings": {
+        "foreground": "#768390",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": "comment.line.triple-slash.stata",
+      "settings": {
+        "foreground": "#768390",
+        "fontStyle": "italic"
+      }
     }
   ]
 }

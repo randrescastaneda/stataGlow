@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.2] - 2026-02-27
+
+### Fixed
+- **Block comment line continuation**: `/* */` block comments spanning multiple lines now work correctly as line continuations (e.g. `/* \n */`). The `/*` and `*/` delimiters and their contents are properly colored as comments, and code after `*/` on the continuation line is highlighted as normal Stata code.
+- **Block comment mid-line (root cause)**: Arithmetic operator patterns `*` and `/` were too greedy and captured the characters in `/*`/`*/` before the comment rule could match them. Fixed with negative lookbehind/lookahead: `(?<!/)\*(?!/)` and `/(?![/*])`.
+- **Comment pattern ordering**: `#comments-block` is now first in the `comments` group, preventing `comments-star` from capturing the `*` in `*/`.
+- **`comments-star` regex**: Added negative lookahead `(?!/)` so `*/` at the start of a line is not matched as a star comment.
+- **Theme comment colors**: Added explicit `comment.block.stata`, `comment.line.double-slash.stata`, `comment.line.star.stata`, and `comment.line.triple-slash.stata` scopes to all 6 theme files to ensure comments are always colored regardless of base theme.
+
+### Notes
+- **Competing extensions**: Extensions `kylebarron.stata-enhanced` and `mdob2k.stata-language` also register `source.stata`. They must be disabled for StataGlow's grammar to take effect. Added `--disable-extensions` flag to `.vscode/launch.json` for development testing.
+
 ## [2.0.1] - 2026-02-24
 
 ### Fixed

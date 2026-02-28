@@ -55,6 +55,8 @@ Color schemes apply **only to Stata files** — they never affect other language
 
 Open any `.do`, `.ado`, or `.mata` file. Stata code is highlighted automatically.
 
+> **⚠️ Competing extensions:** Other extensions that register the `source.stata` grammar (e.g. `kylebarron.stata-enhanced`, `mdob2k.stata-language`) may shadow StataGlow's grammar. VS Code only uses one grammar per `scopeName`, so **disable** any other Stata grammar extensions for StataGlow to work correctly.
+
 ## Settings
 
 All StataGlow settings live under the `stataGlow.*` prefix. You can configure them in the **Settings UI** or in `settings.json`.
