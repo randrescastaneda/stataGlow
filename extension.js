@@ -208,11 +208,57 @@ class StataCustomCommandsProvider {
     const builder = new vscode.SemanticTokensBuilder(legend);
     const wordPattern = /\b([a-zA-Z_]\w*)\b/g;
 
+    let inBlockComment = false;
+
     for (let lineNum = 0; lineNum < document.lineCount; lineNum++) {
       const line = document.lineAt(lineNum).text;
-      let match;
+
+      // Determine whether each character position is inside a comment.
+      // We track block comments (/* ... */) across lines, and also detect
+      // line comments: * at line start, // and /// mid-line.
+      const commentMask = new Uint8Array(line.length); // 1 = in comment
+      let i = 0;
+
+      while (i < line.length) {
+        if (inBlockComment) {
+          // Look for closing */
+          if (line[i] === '*' && line[i + 1] === '/') {
+            commentMask[i] = 1;
+            commentMask[i + 1] = 1;
+            i += 2;
+            inBlockComment = false;
+          } else {
+            commentMask[i] = 1;
+            i++;
+          }
+        } else {
+          // Check for opening /*
+          if (line[i] === '/' && line[i + 1] === '*') {
+            inBlockComment = true;
+            commentMask[i] = 1;
+            commentMask[i + 1] = 1;
+            i += 2;
+          // Check for line-comment: // or ///
+          } else if (line[i] === '/' && line[i + 1] === '/') {
+            commentMask.fill(1, i);
+            break;
+          // Check for star comment: * at the start of the line (ignoring leading whitespace)
+          } else if (line[i] === '*' && /^\s*$/.test(line.slice(0, i))) {
+            commentMask.fill(1, i);
+            break;
+          } else {
+            i++;
+          }
+        }
+      }
+
       wordPattern.lastIndex = 0;
+      let match;
       while ((match = wordPattern.exec(line)) !== null) {
+        // Skip if the token starts inside a comment
+        if (commentMask[match.index]) {
+          continue;
+        }
         if (commandSet.has(match[1])) {
           builder.push(lineNum, match.index, match[1].length, 0, 1);
         }
