@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.3] - 2026-03-02
+
+### Fixed
+- **Custom commands in comments**: User-defined commands added via `stataGlow.customCommands` (or `.vscode/stata-custom.json`) were incorrectly highlighted even when they appeared inside comments. The semantic token provider now builds a character-level comment mask per line — covering block comments (`/* ... */` spanning multiple lines), line comments (`//`, `///`), and star comments (`*` at line start) — and skips any token whose position falls within a comment.
+
 ## [2.0.2] - 2026-02-27
 
 ### Fixed
