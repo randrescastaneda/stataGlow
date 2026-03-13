@@ -2,7 +2,7 @@
   "name": "stataglow",
   "displayName": "StataGlow",
   "publisher": "randrescastaneda",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Modern, customizable Stata syntax highlighting for VS Code and Positron",
   "license": "MIT",
   "homepage": "https://github.com/randrescastaneda/stataGlow",

@@ -412,9 +412,6 @@
           "name": "string.quoted.double.compound.stata",
           "patterns": [
             {
-              "include": "#string-regular"
-            },
-            {
               "include": "#string-compound"
             },
             {
